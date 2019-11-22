@@ -63,10 +63,11 @@ class ReactImageLightbox extends Component {
   static getTransform({ x = 0, y = 0, zoom = 1, width, targetWidth }) {
     let nextX = x;
     const windowWidth = getWindowWidth();
+    let scaleFactor = zoom * (targetWidth / width);
     if (width > windowWidth) {
       nextX += (windowWidth - width) / 2;
+      scaleFactor = scaleFactor * 1.8;
     }
-    const scaleFactor = zoom * (targetWidth / width);
 
     return {
       transform: `translate3d(${nextX}px,${y}px,0) scale3d(${scaleFactor},${scaleFactor},1)`,
